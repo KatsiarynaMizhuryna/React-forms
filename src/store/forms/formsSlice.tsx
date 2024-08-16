@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Form } from '../../models/Form';
+import countries from '../../models/Countries';
 
 interface FormsState {
   firstForm:Form[];
@@ -14,7 +15,7 @@ const initialState: FormsState = {
   secondForm: [],
   lastAddedFirstFormId: null,
   lastAddedSecondFormId: null,  
-  countries: [],
+  countries: countries,
 };
 
 const formSlice = createSlice({
