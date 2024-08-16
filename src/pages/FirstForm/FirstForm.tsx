@@ -7,6 +7,7 @@ import { schema } from '../../models/ValidationSchema';
 import * as Yup from 'yup';
 import convertToBase64 from '../../utils/convertToBase64';
 import getPasswordStrength from '../../utils/getPasswordStrength';
+import countries from '../../models/Countries';
 
 export default function FirstForm() {
   const dispatch = useDispatch();
@@ -236,10 +237,9 @@ export default function FirstForm() {
             required
           />
           <datalist id="countries">
-            <option value="United States" />
-            <option value="Canada" />
-            <option value="United Kingdom" />
-            <option value="Australia" />
+          {countries.map((country, index) => (
+            <option key={index} value={country} />
+          ))}
           </datalist>
           {errors.country && (
             <div className={styles.error}>{errors.country}</div>
