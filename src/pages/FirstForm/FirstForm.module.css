@@ -1,0 +1,113 @@
+.form_container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_group {
+    margin-bottom: 20px;  
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.error_input {
+    border: 2px solid red !important;
+  }
+
+.form_radio_btn {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    width: 80%;
+    margin-bottom: 1rem;
+    margin-left: 45px;
+    justify-content: left;
+    align-items: center;
+}
+
+.form-group .password_strength {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.form-group .password_strength span {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.password_strength .weak {
+    background-color: #ff6b6b;
+    color: white;
+}
+
+.password_strength .medium {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.password_strength .strong {
+    background-color: #4caf50;
+    color: white;
+}
+
+label {
+    display: flex;
+    margin-bottom: 8px;
+    margin-left: 45px;
+    font-weight: bold;
+}
+.submit_btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 86%;
+}
+
+.submit_btn:disabled {
+    background-color: #ccc;
+}
+
+.form_group_inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_group_inline .form_group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.form_group_inline .form_group:last-child {
+    margin-right: 0;
+}
+
+.form_group input[type="radio"],
+.form_group input[type="checkbox"] {
+    width: auto;    
+    margin-right: 10px;
+    display: flex;
+}
+
+.control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    width: 80%;
+    margin-bottom: 1rem;
+}

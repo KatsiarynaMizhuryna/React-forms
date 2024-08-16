@@ -1,0 +1,17 @@
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    margin-bottom: 10px;
+    padding: 20px;
+    background: rgb(45, 33, 33);
+    color: black;
+}
+
+.link {
+    text-decoration: none;
+    color: wheat;
+    font-weight: bold;
+
+}
