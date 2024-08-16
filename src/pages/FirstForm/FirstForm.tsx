@@ -6,11 +6,13 @@ import { addFirstFormData } from '../../store/forms/formsSlice';
 import { schema } from '../../models/ValidationSchema';
 import * as Yup from 'yup';
 import convertToBase64 from '../../utils/convertToBase64';
+import getPasswordStrength from '../../utils/getPasswordStrength';
 
 export default function FirstForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [passwordStrength, setPasswordStrength] = useState<string>('');
 
   const nameRef = useRef<HTMLInputElement>(null);
   const ageRef = useRef<HTMLInputElement>(null);
@@ -21,6 +23,11 @@ export default function FirstForm() {
   const termsRef = useRef<HTMLInputElement>(null);
   const pictureRef = useRef<HTMLInputElement>(null);
   const countryRef = useRef<HTMLInputElement>(null);
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const password = event.target.value;
+    setPasswordStrength(getPasswordStrength(password));
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -127,15 +134,34 @@ export default function FirstForm() {
               }`}
               type="password"
               placeholder="Enter your password"
+              onChange={handlePasswordChange}
               required
             />
             {errors.password && (
               <div className={styles.error}>{errors.password}</div>
             )}
-            <div className={styles.password_strength} id="passwordStrength">
-              <span className={styles.weak}>Weak</span>
-              <span className={styles.medium}>Medium</span>
-              <span className={styles.strong}>Strong</span>
+            <div id="passwordStrength">
+              <span
+                className={`${styles.strength_indicator} ${
+                  passwordStrength === 'weak' ? styles.weak : ''
+                }`}
+              >
+                Weak
+              </span>
+              <span
+                className={`${styles.strength_indicator} ${
+                  passwordStrength === 'medium' ? styles.medium : ''
+                }`}
+              >
+                Medium
+              </span>
+              <span
+                className={`${styles.strength_indicator} ${
+                  passwordStrength === 'strong' ? styles.strong : ''
+                }`}
+              >
+                Strong
+              </span>
             </div>
           </div>
         </div>
@@ -219,7 +245,6 @@ export default function FirstForm() {
             <div className={styles.error}>{errors.country}</div>
           )}
         </div>
-
         <button type="submit" className={styles.submit_btn} id="submitBtn">
           Create Account
         </button>

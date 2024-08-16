@@ -47,21 +47,6 @@
     border-radius: 3px;
 }
 
-.password_strength .weak {
-    background-color: #ff6b6b;
-    color: white;
-}
-
-.password_strength .medium {
-    background-color: #ffcc00;
-    color: white;
-}
-
-.password_strength .strong {
-    background-color: #4caf50;
-    color: white;
-}
-
 label {
     display: flex;
     margin-bottom: 8px;
@@ -82,6 +67,33 @@ label {
 .submit_btn:disabled {
     background-color: #ccc;
 }
+
+.strength_indicator {
+    display: inline-block;
+    width: 60px;
+    height: 18px;
+    background-color: lightgray;
+    margin-right: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    color: #fff;
+  }
+
+  .strength_indicator.weak {
+    background-color: red;
+  }
+  
+  .strength_indicator.medium {
+    background-color: orange;
+  }
+  
+  .strength_indicator.strong {
+    background-color: green;
+  }
+  
+  .strength_indicator:not(.weak):not(.medium):not(.strong) {
+    visibility: hidden;
+  }
 
 .form_group_inline {
     display: flex;
