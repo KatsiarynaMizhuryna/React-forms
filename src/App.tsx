@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import FirstForm from './pages/FirstForm/FirstForm';
-import SecondForm from './pages/SecondForm/SecondForm';
 import Main from './pages/Main/Main';
 import Navigation from './components/Navigation/Navigation';
+import UncontrolledForm from './pages/UncontrolledForm/UncontrolledForm';
+import ControlledForm from './pages/ControlledForm/ControlledForm';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/first-form" element={<FirstForm />} />
-        <Route path="/second-form" element={<SecondForm />} />
+        <Route path="/uncontrolled-form" element={<UncontrolledForm />} />
+        <Route path="/controlled-form" element={<ControlledForm />} />
       </Routes>
     </Router>
   );

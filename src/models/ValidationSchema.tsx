@@ -1,6 +1,9 @@
 import * as yup from 'yup';
+import { InferType } from 'yup';
 const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 const FILE_SIZE_LIMIT = 2 * 1024 * 1024;
+
+export type FormData = InferType<typeof schema>;
 
 export const schema = yup.object().shape({
   name: yup

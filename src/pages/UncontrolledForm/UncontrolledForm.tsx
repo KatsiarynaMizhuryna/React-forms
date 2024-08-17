@@ -1,20 +1,19 @@
 import { useDispatch } from 'react-redux';
-import styles from './FirstForm.module.css';
+import styles from './UncontrolledForm.module.css'
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
-import { addFirstFormData } from '../../store/forms/formsSlice';
+import { addUncontrolledFormData } from '../../store/forms/formsSlice';
 import { schema } from '../../models/ValidationSchema';
 import * as Yup from 'yup';
 import convertToBase64 from '../../utils/convertToBase64';
 import getPasswordStrength from '../../utils/getPasswordStrength';
 import countries from '../../models/Countries';
 
-export default function FirstForm() {
+export default function UncontrolledForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [passwordStrength, setPasswordStrength] = useState<string>('');
-
   const nameRef = useRef<HTMLInputElement>(null);
   const ageRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -32,7 +31,6 @@ export default function FirstForm() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const formValues = {
       name: nameRef.current?.value || '',
       age: ageRef.current?.valueAsNumber || 0,
@@ -51,14 +49,12 @@ export default function FirstForm() {
       if (formValues.picture) {
         pictureBase64 = await convertToBase64(formValues.picture as File);
       }
-
       dispatch(
-        addFirstFormData({
+        addUncontrolledFormData({
           ...formValues,
           picture: pictureBase64,
         })
       );
-
       navigate('/');
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
@@ -74,8 +70,6 @@ export default function FirstForm() {
         console.error('Unexpected error:', err);
       }
     }
-
-    console.log(formValues);
   };
   return (
     <div className={styles.form_container}>
@@ -237,9 +231,9 @@ export default function FirstForm() {
             required
           />
           <datalist id="countries">
-          {countries.map((country, index) => (
-            <option key={index} value={country} />
-          ))}
+            {countries.map((country, index) => (
+              <option key={index} value={country} />
+            ))}
           </datalist>
           {errors.country && (
             <div className={styles.error}>{errors.country}</div>

@@ -3,8 +3,11 @@ import { RootState } from '../../store';
 import UserData from '../../components/UserData/UserData';
 
 export default function Main() {
-  const firstFormData = useSelector(
-    (state: RootState) => state.formSliceReducer.firstForm
+  const UncontrolledFormData = useSelector(
+    (state: RootState) => state.formSliceReducer.UncontrolledForm
+  );
+  const ControlledFormData = useSelector(
+    (state: RootState) => state.formSliceReducer.ControlledForm
   );
   const lastAddedFirstFormId = useSelector(
     (state: RootState) => state.formSliceReducer.lastAddedFirstFormId
@@ -15,8 +18,8 @@ export default function Main() {
         <h1>Main Page</h1>
         <div>
           <h2>First Form Data</h2>
-          {firstFormData &&
-            firstFormData.map((data, index) => (
+          {UncontrolledFormData &&
+            UncontrolledFormData.map((data, index) => (
               <UserData
                 id={index + 1}
                 formData={data}
@@ -25,7 +28,18 @@ export default function Main() {
               />
             ))}
         </div>
-        <h2>Second Form Data</h2>
+        <div>
+          <h2>Controlled Form Data</h2>
+          {ControlledFormData &&
+            ControlledFormData.map((data, index) => (
+              <UserData
+                id={index + 1}
+                formData={data}
+                key={index}
+                isLast={index === lastAddedFirstFormId}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );
