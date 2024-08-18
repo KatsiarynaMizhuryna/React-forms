@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './ControlledForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -7,11 +7,16 @@ import { addControlledFormData } from '../../store/forms/formsSlice';
 import { schema, FormData } from '../../models/ValidationSchema';
 import convertToBase64 from '../../utils/convertToBase64';
 import getPasswordStrength from '../../utils/getPasswordStrength';
-import countries from '../../models/Countries';
+//import countries from '../../models/Countries';
+import { RootState } from '../../store';
 
 export default function ControlledForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const countries = useSelector(
+    (state: RootState) => state.formSliceReducer.countries
+  );
+
   const {
     register,
     handleSubmit,

@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './UncontrolledForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
@@ -7,7 +7,7 @@ import { schema } from '../../models/ValidationSchema';
 import * as Yup from 'yup';
 import convertToBase64 from '../../utils/convertToBase64';
 import getPasswordStrength from '../../utils/getPasswordStrength';
-import countries from '../../models/Countries';
+import { RootState } from '../../store';
 
 export default function UncontrolledForm() {
   const dispatch = useDispatch();
@@ -42,6 +42,7 @@ export default function UncontrolledForm() {
       picture: pictureRef.current?.files?.[0] ?? null,
       country: countryRef.current?.value || '',
     };
+    
     try {
       await schema.validate(formValues, { abortEarly: false });
 
@@ -71,6 +72,9 @@ export default function UncontrolledForm() {
       }
     }
   };
+  const countries = useSelector(
+    (state: RootState) => state.formSliceReducer.countries
+  );
   return (
     <div className={styles.form_container}>
       <form id="userForm" onSubmit={handleSubmit}>
