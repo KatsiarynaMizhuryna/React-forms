@@ -3,18 +3,18 @@ import { Form } from '../../models/Form';
 import countries from '../../models/Countries';
 
 interface FormsState {
-  UncontrolledForm:Form[];
+  UncontrolledForm: Form[];
   ControlledForm: Form[];
   lastAddedUncontrolledFormId: number | null;
-  lastAddedControlledFormId: number | null;   
-  countries: string [];
+  lastAddedControlledFormId: number | null;
+  countries: string[];
 }
 
 const initialState: FormsState = {
   UncontrolledForm: [],
   ControlledForm: [],
   lastAddedUncontrolledFormId: null,
-  lastAddedControlledFormId: null,  
+  lastAddedControlledFormId: null,
   countries: countries,
 };
 
@@ -29,13 +29,14 @@ const formSlice = createSlice({
     },
     addControlledFormData: (state, action) => {
       state.ControlledForm.push(action.payload);
-      state.lastAddedControlledFormId = state.ControlledForm.length - 1; 
-    },    
+      state.lastAddedControlledFormId = state.ControlledForm.length - 1;
+    },
     setCountries: (state, action) => {
       state.countries = action.payload;
     },
   },
 });
 
-export const { addUncontrolledFormData, addControlledFormData, setCountries } = formSlice.actions;
-export  const formSliceReducer = formSlice.reducer;
+export const { addUncontrolledFormData, addControlledFormData, setCountries } =
+  formSlice.actions;
+export const formSliceReducer = formSlice.reducer;

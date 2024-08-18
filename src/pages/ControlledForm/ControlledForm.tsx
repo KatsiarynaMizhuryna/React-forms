@@ -7,7 +7,6 @@ import { addControlledFormData } from '../../store/forms/formsSlice';
 import { schema, FormData } from '../../models/ValidationSchema';
 import convertToBase64 from '../../utils/convertToBase64';
 import getPasswordStrength from '../../utils/getPasswordStrength';
-//import countries from '../../models/Countries';
 import { RootState } from '../../store';
 
 export default function ControlledForm() {
@@ -34,7 +33,7 @@ export default function ControlledForm() {
       let pictureBase64: string | null = null;
       if (data.picture) {
         pictureBase64 = await convertToBase64((data.picture as File[])[0]);
-      }      
+      }
       dispatch(
         addControlledFormData({
           ...data,

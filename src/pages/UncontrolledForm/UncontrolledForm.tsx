@@ -30,7 +30,7 @@ export default function UncontrolledForm() {
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();    
+    event.preventDefault();
     const formValues = {
       name: nameRef.current?.value || '',
       age: ageRef.current?.valueAsNumber || 0,
@@ -42,7 +42,7 @@ export default function UncontrolledForm() {
       picture: pictureRef.current?.files?.[0] ?? null,
       country: countryRef.current?.value || '',
     };
-    
+
     try {
       await schema.validate(formValues, { abortEarly: false });
 

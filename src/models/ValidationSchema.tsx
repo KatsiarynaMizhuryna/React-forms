@@ -13,12 +13,12 @@ export const schema = yup.object().shape({
   age: yup.number().positive().integer().required(),
   email: yup.string().email().required(),
   password: yup
-  .string()
-  .matches(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-    'Password must have at least one uppercase, one lowercase, one number and one special character and must be at least 8 characters long'
-  )
-  .required('Password is required'),
+    .string()
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      'Password must have at least one uppercase, one lowercase, one number and one special character and must be at least 8 characters long'
+    )
+    .required('Password is required'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'Passwords must match')
@@ -28,33 +28,31 @@ export const schema = yup.object().shape({
     .boolean()
     .oneOf([true], 'You must accept the terms and conditions')
     .required(),
-    picture: yup
+  picture: yup
     .mixed()
-    .test('fileSize', 'File is too large', value => {      
-      if (value instanceof FileList) {        
+    .test('fileSize', 'File is too large', (value) => {
+      if (value instanceof FileList) {
         return (
           (value as FileList)[0] &&
           (value as FileList)[0].size <= FILE_SIZE_LIMIT
         );
-      } 
+      }
       if (value instanceof File) {
         return value.size <= FILE_SIZE_LIMIT;
-      }
-      else {
+      } else {
         return false;
-      }    
-    })    
-    .test('fileFormat', 'Unsupported Format', value => {      
+      }
+    })
+    .test('fileFormat', 'Unsupported Format', (value) => {
       if (value instanceof FileList) {
         return (
           (value as FileList)[0] &&
           SUPPORTED_FORMATS.includes((value as FileList)[0].type)
         );
-      } 
+      }
       if (value instanceof File) {
         return SUPPORTED_FORMATS.includes(value.type);
-      }
-      else {
+      } else {
         return false;
       }
     })
