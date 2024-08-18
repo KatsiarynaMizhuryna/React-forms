@@ -1,15 +1,15 @@
-import { Form } from "../../models/Form"
-import styles  from './UserData.module.css'
+import { Form } from '../../models/Form';
+import styles from './UserData.module.css';
 
 interface UserDataProps {
-    formData: Form;
-    id: number;
-    isLast: boolean; 
-  }
+  formData: Form;
+  id: number;
+  isLast: boolean;
+}
 
-  const UserData: React.FC<UserDataProps> = ( { formData, id, isLast  } ) => {
-    return (
-        <div className={`${styles.container} ${isLast ? styles.lastAdded : ''}`}>
+const UserData: React.FC<UserDataProps> = ({ formData, id, isLast }) => {
+  return (
+    <div className={`${styles.container} ${isLast ? styles.lastAdded : ''}`}>
       <h1 className={styles.title}>{id}</h1>
       <div className={styles.info}>
         <div className={styles.info_item}>
@@ -28,10 +28,14 @@ interface UserDataProps {
           <strong>Country:</strong> <span>{formData.country}</span>
         </div>
         <div className={styles.info_item}>
-          <strong>Picture:</strong> 
+          <strong>Picture:</strong>
           <div className={styles.picture_container}>
             {formData.picture ? (
-              <span className={styles.picture}>{(formData.picture).toString()}</span>
+              <img
+                className={styles.picture}
+                src={`${formData.picture}`}
+                alt="Uploaded preview"
+              />
             ) : (
               <span>No picture uploaded</span>
             )}
@@ -39,7 +43,7 @@ interface UserDataProps {
         </div>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default UserData
+export default UserData;

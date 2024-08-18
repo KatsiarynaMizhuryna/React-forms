@@ -36,7 +36,11 @@ export const schema = yup.object().shape({
           (value as FileList)[0] &&
           (value as FileList)[0].size <= FILE_SIZE_LIMIT
         );
-      } else {
+      } 
+      if (value instanceof File) {
+        return value.size <= FILE_SIZE_LIMIT;
+      }
+      else {
         return false;
       }    
     })    
@@ -46,7 +50,11 @@ export const schema = yup.object().shape({
           (value as FileList)[0] &&
           SUPPORTED_FORMATS.includes((value as FileList)[0].type)
         );
-      } else {
+      } 
+      if (value instanceof File) {
+        return SUPPORTED_FORMATS.includes(value.type);
+      }
+      else {
         return false;
       }
     })

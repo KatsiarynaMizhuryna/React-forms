@@ -5,7 +5,7 @@ import { formSliceReducer } from "./forms/formsSlice";
 export const store = configureStore({
     reducer:{
         formSliceReducer
-    }
+    } 
 })
 
 setupListeners(store.dispatch);

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import styles from './ControlledForm.module.css'
+import styles from './ControlledForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,7 +16,7 @@ export default function ControlledForm() {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isValid },    
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -25,11 +25,12 @@ export default function ControlledForm() {
   const password = watch('password') || '';
 
   const onSubmit = async (data: FormData) => {
-    try {    
-      let pictureBase64: string | null = null;      
+    try {
+      let pictureBase64: string | null = null;
       if (data.picture) {
         pictureBase64 = await convertToBase64((data.picture as File[])[0]);
-      }data
+      }
+      data;
       dispatch(
         addControlledFormData({
           ...data,
@@ -58,7 +59,9 @@ export default function ControlledForm() {
             id="name"
             placeholder="Enter your name"
           />
-          {errors.name && <div className={styles.error}>{errors.name.message}</div>}
+          {errors.name && (
+            <div className={styles.error}>{errors.name.message}</div>
+          )}
         </div>
 
         <div className={styles.form_group}>
@@ -73,7 +76,9 @@ export default function ControlledForm() {
             placeholder="Enter your age"
             min="0"
           />
-          {errors.age && <div className={styles.error}>{errors.age.message}</div>}
+          {errors.age && (
+            <div className={styles.error}>{errors.age.message}</div>
+          )}
         </div>
 
         <div className={styles.form_group}>
@@ -86,7 +91,9 @@ export default function ControlledForm() {
             type="email"
             placeholder="Enter your email"
           />
-          {errors.email && <div className={styles.error}>{errors.email.message}</div>}
+          {errors.email && (
+            <div className={styles.error}>{errors.email.message}</div>
+          )}
         </div>
 
         <div className={styles.form_group_inline}>
@@ -156,7 +163,9 @@ export default function ControlledForm() {
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
-          {errors.gender && <div className={styles.error}>{errors.gender.message}</div>}
+          {errors.gender && (
+            <div className={styles.error}>{errors.gender.message}</div>
+          )}
         </div>
 
         <div className={styles.form_group}>
@@ -201,10 +210,17 @@ export default function ControlledForm() {
               <option key={index} value={country} />
             ))}
           </datalist>
-          {errors.country && <div className={styles.error}>{errors.country.message}</div>}
+          {errors.country && (
+            <div className={styles.error}>{errors.country.message}</div>
+          )}
         </div>
 
-        <button type="submit" className={styles.submit_btn} id="submitBtn" disabled={!isValid}>
+        <button
+          type="submit"
+          className={styles.submit_btn}
+          id="submitBtn"
+          disabled={!isValid}
+        >
           Create Account
         </button>
       </form>

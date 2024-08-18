@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import styles from './UncontrolledForm.module.css'
+import styles from './UncontrolledForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { addUncontrolledFormData } from '../../store/forms/formsSlice';
@@ -30,7 +30,7 @@ export default function UncontrolledForm() {
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault();    
     const formValues = {
       name: nameRef.current?.value || '',
       age: ageRef.current?.valueAsNumber || 0,
@@ -42,12 +42,12 @@ export default function UncontrolledForm() {
       picture: pictureRef.current?.files?.[0] ?? null,
       country: countryRef.current?.value || '',
     };
-
     try {
       await schema.validate(formValues, { abortEarly: false });
+
       let pictureBase64: string | null = null;
       if (formValues.picture) {
-        pictureBase64 = await convertToBase64(formValues.picture as File);
+        pictureBase64 = await convertToBase64(formValues.picture);
       }
       dispatch(
         addUncontrolledFormData({
