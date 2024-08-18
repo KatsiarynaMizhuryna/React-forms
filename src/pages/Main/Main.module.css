@@ -1,4 +1,17 @@
-.mainContainer {
+.formSection {
+    margin-bottom: 30px;
+    width: 500px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  .lastUserData {
+    background-color: #f9f9f9;
+    font-weight: bold;
+  }
+
+  .mainContainer {
     padding: 20px;    
     margin: 0 auto;
     font-family: Arial, sans-serif;
@@ -7,17 +20,15 @@
     align-items: center;
   }
   
+  .noData {
+    color: #777;
+    font-style: italic;
+  }
+  
   .pageTitle {
     text-align: center;
     margin-bottom: 40px;
-  }
-  
-  .formSection {
-    margin-bottom: 30px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-  }
+  }  
   
   .sectionTitle {
     font-size: 1.5em;
@@ -32,15 +43,5 @@
   
   .userData:last-child {
     border-bottom: none;
-  }
-  
-  .lastUserData {
-    background-color: #f9f9f9;
-    font-weight: bold;
-  }
-  
-  .noData {
-    color: #777;
-    font-style: italic;
-  }
+  }  
   

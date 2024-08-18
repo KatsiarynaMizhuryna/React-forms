@@ -1,17 +1,22 @@
 .navigation {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 20px;    
     height: 60px;
     margin-bottom: 10px;
     padding: 20px;
     background: rgb(45, 33, 33);
-    color: black;
-}
-
-.link {
+    color: #fff;
+  }
+  
+  .link {
     text-decoration: none;
-    color: wheat;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .activeLink {
+    border: 2px solid #fff;
+    color:#fff;
     font-weight: bold;
-
-}
+    padding: 10px;
+  }
