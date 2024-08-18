@@ -1,9 +1,7 @@
 import styles from './Navigation.module.css';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export default function Navigation() {
-  // const location = useLocation();
-  // const currentPath = location.pathname;
+export default function Navigation() { 
   return (
     <nav className={styles.navigation}>
       <NavLink 
@@ -23,8 +21,7 @@ export default function Navigation() {
         className={({ isActive }) => isActive ? styles.activeLink : styles.link}
       >
         Controlled Form
-      </NavLink>
-      
+      </NavLink>      
     </nav>
   );
 }
