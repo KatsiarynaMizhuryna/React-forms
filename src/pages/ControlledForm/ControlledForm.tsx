@@ -16,19 +16,19 @@ export default function ControlledForm() {
     register,
     handleSubmit,
     watch,
-    formState: { errors  },    
+    formState: { errors, isValid },    
   } = useForm({
     resolver: yupResolver(schema),
-    mode: 'all',
+    mode: 'onChange',
   });
 
   const password = watch('password') || '';
 
   const onSubmit = async (data: FormData) => {
     try {    
-      let pictureBase64: string | null = null;
+      let pictureBase64: string | null = null;      
       if (data.picture) {
-        pictureBase64 = await convertToBase64(data.picture as File);
+        pictureBase64 = await convertToBase64((data.picture as File[])[0]);
       }data
       dispatch(
         addControlledFormData({
@@ -204,7 +204,7 @@ export default function ControlledForm() {
           {errors.country && <div className={styles.error}>{errors.country.message}</div>}
         </div>
 
-        <button type="submit" className={styles.submit_btn} id="submitBtn">
+        <button type="submit" className={styles.submit_btn} id="submitBtn" disabled={!isValid}>
           Create Account
         </button>
       </form>
