@@ -29,8 +29,7 @@ export default function ControlledForm() {
       let pictureBase64: string | null = null;
       if (data.picture) {
         pictureBase64 = await convertToBase64((data.picture as File[])[0]);
-      }
-      data;
+      }      
       dispatch(
         addControlledFormData({
           ...data,
