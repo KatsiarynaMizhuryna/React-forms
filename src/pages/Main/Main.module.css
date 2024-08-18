@@ -3,7 +3,7 @@
     width: 500px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 15px;
+    padding: 15px;    
   }
 
   .lastUserData {
@@ -14,10 +14,12 @@
   .mainContainer {
     padding: 20px;    
     margin: 0 auto;
+    margin-right: 50px;
+    margin-left: 50px;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
   
   .noData {
@@ -37,7 +39,7 @@
   }
   
   .userData {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #605b5b;
     padding: 10px 0;
   }
   
